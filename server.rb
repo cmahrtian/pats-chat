@@ -8,6 +8,10 @@ module Forum
 		get "/" do
 			erb :index
 		end
+
+		get "/topic" do
+			erb :topic
+		end
 			
 	end
 
