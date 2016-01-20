@@ -15,7 +15,6 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rake (10.5.0)
     redcarpet (3.3.4)
     sinatra (1.4.6)
       rack (~> 1.4)
@@ -37,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   pg
   pry
-  rake
+  rack
   redcarpet
   sinatra
   sinatra-contrib
