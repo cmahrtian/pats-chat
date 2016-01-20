@@ -11,14 +11,18 @@ else
 	conn = PG.connect(dbname: "project2")
 end	
 
+conn.exec("DROP TABLE IF EXISTS users")
+
 conn.exec("CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
-	name VARCHAR
+	name VARCHAR,
 	email VARCHAR UNIQUE NOT NULL,
 	password VARCHAR,
 	avatar VARCHAR
 	)"
 )
+
+conn.exec("DROP TABLE IF EXISTS topics")
 
 conn.exec("CREATE TABLE topics (
 	id SERIAL PRIMARY KEY,
@@ -29,6 +33,8 @@ conn.exec("CREATE TABLE topics (
 	)"
 )
 
+conn.exec("DROP TABLE IF EXISTS comments")
+
 conn.exec("CREATE TABLE comments (
 	id SERIAL PRIMARY KEY,
 	upvotes INTEGER,
@@ -38,6 +44,8 @@ conn.exec("CREATE TABLE comments (
 	topic_id INTEGER REFERENCES topics
 	)"
 )
+
+conn.exec("DROP TABLE IF EXISTS replies")
 
 conn.exec("CREATE TABLE replies (
 	id SERIAL PRIMARY KEY,
