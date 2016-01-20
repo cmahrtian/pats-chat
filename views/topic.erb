@@ -1,0 +1,33 @@
+<div class="jumbotron">	
+	<div class="container">
+		<h1 style="text-align: center">Start a new topic!</h1>
+
+		<form class="topic" action="/topic" method="post">
+			
+			<div class="input-row">
+				<label for="name">Name: </label>
+				<input type="text" name="name"/>
+			</div>
+
+			<div class="input-row">
+				<label for="email">Email: </label>
+				<input type="text" name="email"/>
+			</div>
+
+			<div class="input-row">
+				<label for="topic">Topic Title (max 100 characters): </label>
+				<input type="text" name="topic"/>
+			</div>
+
+			<div class="input-row">	
+				<label for="text">Initial Topic Comment: </label>
+				<textarea name="message"></textarea>	
+			</div>	
+
+			<div class="input-row">
+				<input type="submit" value="Submit Topic!"/>
+			</div>
+		</form>
+
+	</div>	
+</div>	
