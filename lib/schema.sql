@@ -5,8 +5,8 @@ CREATE TABLE users (
 	name VARCHAR,
 	email VARCHAR UNIQUE NOT NULL,
 	password VARCHAR,
-	avatar VARCHAR,
-);
+	avatar VARCHAR
+);	
 
 DROP TABLE IF EXISTS topics;
 
@@ -15,7 +15,7 @@ CREATE TABLE topics (
 	topic_name VARCHAR,
 	topic_comment VARCHAR,
 	topic_score INTEGER,
-	user_id INTEGER REFERENCES users
+	user_id INTEGER REFERENCES users (id)
 );
 
 DROP TABLE IF EXISTS comments;
@@ -25,8 +25,8 @@ CREATE TABLE comments (
 	upvotes INTEGER,
 	downvotes INTEGER,
 	comment_content VARCHAR,
-	user_id INTEGER REFERENCES users,
-	topic_id INTEGER REFERECES topics
+	user_id INTEGER REFERENCES users (id),
+	topic_id INTEGER REFERENCES topics
 );
 
 DROP TABLE IF EXISTS replies;
@@ -36,8 +36,8 @@ CREATE TABLE replies (
 	upvotes INTEGER,
 	downvotes INTEGER,
 	reply_content VARCHAR,
-	user_id INTEGER REFERENCES users,
-	comment_id INTEGER REFRENCES comments
+	user_id INTEGER REFERENCES users (id),
+	comment_id INTEGER REFERENCES comments
 );
 
 -- -- DROP TABLE IF EXISTS users
