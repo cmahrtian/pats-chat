@@ -1,6 +1,5 @@
 require "pg"
 require "sinatra/base"
-# require "pry"
 require "bcrypt"
 
 ERRORS = { "1" => "That email already exists!" }
