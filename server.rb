@@ -128,7 +128,7 @@ module Forum
 		end
 
 		post "/login" do
-			@user = db.exec_params("SELECT * FROM users WHERE email = $1", [params[:email]]).first
+			@user = @@db.exec_params("SELECT * FROM users WHERE email = $1", [params[:email]]).first
 			if @user
 				if BCrypt::Password.new(@user["password"]) == params[:password]
 					session["user_id"] = @user["id"]
