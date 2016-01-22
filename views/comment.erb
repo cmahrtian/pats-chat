@@ -1,0 +1,21 @@
+<div class="jumbotron">	
+	<div class="container">
+		<h1 style="text-align: center">Comment on a topic!</h1>
+		<% if @comment_submitted %>
+			<p>Thank you!</p>
+			<p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>" role="button">Back to Topic Page! &raquo;</a></p>
+		<% else %>
+			<form class="comment" action="/topic/<%="#{@id}"%>/comment" method="post">
+				
+				<div class="input-row">	
+					<label for="comment">Comment: </label>
+					<textarea name="comment"></textarea>	
+				</div>	
+
+				<div class="input-row">
+					<input type="submit" value="Submit Comment!"/>
+				</div>
+			</form>
+		<% end %>	
+	</div>	
+</div>	

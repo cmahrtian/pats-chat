@@ -13,25 +13,30 @@ div.row {
   margin-left: 1%;
 }
 
-form.topic {
+/*pre.user {
+  display: inline-block;
+  position: absolute;
+}*/
+
+/*form.topic, form.comment {
   width: 600px;
   background: #FBE0B6;
   padding: 20px;
   margin: 0 auto;
 }
 
-form.topic div.input-row {
+form.topic, form.comment div.input-row {
   padding: 6px;
 }
 
-form.topic div.input-row label {
+form.topic, form.comment div.input-row label {
   vertical-align: top;
   font-size: 22px;
   display: inline-block;
   width: 400px;
 }
 
-form.topic div.input-row input[type=text] {
+form.topic, form.comment div.input-row input[type=text] {
   font-size: 22px;
   width: 500px;
   height: 50px;
@@ -39,7 +44,7 @@ form.topic div.input-row input[type=text] {
   border: 1px solid #bbb;
 }
 
-form.topic div.input-row textarea {
+form.topic, form.comment div.input-row textarea {
   font-size: 22px;
   padding: 6px;
   width: 500px;
@@ -47,11 +52,11 @@ form.topic div.input-row textarea {
   border: 1px solid #bbb;
 }
 
-form.topic div.input-row input[type=submit] {
+form.topic, form.comment div.input-row input[type=submit] {
   font-size: 22px;
   border: 1px solid #bbb;
   margin-left: 126px;
   background: #DE5A51;
   padding: 6px 20px;
   cursor: pointer;
-}
+}*/

@@ -4,6 +4,17 @@
 		<p><strong>Name: </strong><%= "#{@topic['name']}" %></p>
         <p><strong>Email: </strong><%= "#{@topic['email']}" %></p>
         <p><strong>Comment: </strong><%= "#{@topic['topic_comment']}" %></p>
-        <p><a class="btn btn-primary btn-lg" href="/topic" role="button">Post a comment! &raquo;</a></p>
-	</div>
-</div>
+        <p>
+            <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote</button></a>
+            <h4><%= "#{@topic['topic_score']}" %></h4>
+            <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote</button></a>
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
+    </div>
+</div>    
+<div class="comments" style="margin-left: 10%">    
+    <h2>Number of Previous Comments: <%= "#{@topic['num_comments']}" %></h2>
+    <% @comments.each do |comment| %>
+    	<p><strong>Comment: </strong><%= "#{comment['comment_content']}" %></p>
+    <% end %>
+</div>    

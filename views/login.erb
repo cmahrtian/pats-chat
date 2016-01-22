@@ -1,0 +1,15 @@
+<%= @error %>
+
+<h1>Log in and contribute to Pats Chat!</h1>
+
+<form method="post" action="/login">
+	<div class="input-row">
+		<label for="email">Email: </label>	
+		<input type="text" name="email">
+	</div>
+	<div class="input-row">
+		<label for="password">Password: </label>
+		<input type="password" name="password">
+	</div>
+	<input type="submit" value="Log In!">
+</form>

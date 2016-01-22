@@ -4,7 +4,11 @@
         <h1>Wicked pissah!</h1>
         <p>Welcome to Pats Chat, an open forum for fans to share their feelings on the four-time Super Bowl champs - whether you love the Patriots or hate them with the heat of a thousand suns.</p>
         <p>Feel free to peruse our list of previously inaugurated topics or start one of your own.</p>
-        <p><a class="btn btn-primary btn-lg" href="/topic" role="button">Start a Topic! &raquo;</a></p>
+        <% if current_user['name'] %>
+          <p><a class="btn btn-primary btn-lg" href="/topic" role="button">Start a Topic! &raquo;</a></p>
+        <% else %>  
+          <p><a class="btn btn-primary btn-lg" href="/login" role="button">Start a Topic! &raquo;</a></p>
+        <% end %>
       </div>
     </div>
 
@@ -16,8 +20,26 @@
           <h3><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h3>
           <p><strong>Name: </strong><%= "#{topic['name']}" %></p>
           <p><strong>Email: </strong><%= "#{topic['email']}" %></p>
-          <p><strong>Comment: </strong><%= "#{topic['topic_comment']}" %></p>
-          <p><a class="btn btn-primary btn-lg" href="/topic" role="button">Post a comment! &raquo;</a></p>
+          <p><strong>Blurb: </strong><%= "#{topic['topic_comment']}" %></p>
+          <p>
+            <% if current_user['name'] %>
+              <a href="/upvote/<%="#{topic['id']}"%>"><button type="button" class="btn btn-success">Upvote</button></a>
+              <h4><%= "#{topic['topic_score']}" %></h4>
+              <a href="/downvote/<%="#{topic['id']}"%>"><button type="button" class="btn btn-danger">Downvote</button></a>
+            <% else %>
+              <a href="/login"><button type="button" class="btn btn-success">Upvote</button></a>
+              <h4><%= "#{topic['topic_score']}" %></h4>
+              <a href="/login"><button type="button" class="btn btn-danger">Downvote</button></a>
+            <% end %>
+          </p>
+          <h4>Number of Comments: <%= "#{topic['num_comments']}" %></h4>
+          <p>
+            <% if current_user['name'] %>
+              <a class="btn btn-primary btn-lg" href="/topic/<%="#{topic['id']}"%>/comment" role="button">Post a comment! &raquo;</a>
+            <% else %>
+              <a class="btn btn-primary btn-lg" href="/login" role="button">Post a comment! &raquo;</a>
+            <% end %>
+          </p>
           <!-- <div class="input-row">
             <input type="submit" value="Comment on this topic!"/>
           </div> -->

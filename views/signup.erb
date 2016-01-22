@@ -1,0 +1,26 @@
+<%= @error %>
+<% if @email_error %>
+	<h3><%= @email_error %></h3>
+<% end %>
+
+<h1>Sign up and contribute to Pats Chat!</h1>
+
+<form method="post" action="/signup">
+	<div class="input-row">
+		<label for="name">Name: </label>
+		<input type="text" name="name">
+	</div>
+	<div class="input-row">
+		<label for="email">Email: </label>	
+		<input type="text" name="email">
+	</div>
+	<div class="input-row">
+		<label for="password">Password: </label>
+		<input type="password" name="password">
+	</div>
+	<div class="input-row">
+		<label for="password">Avatar URL: </label>
+		<input type="text" name="avatar">
+	</div>
+	<input type="submit" value="Sign Up!">
+</form>	

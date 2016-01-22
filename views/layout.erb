@@ -11,15 +11,15 @@
 
     <title>Pats Chat: A Forum for Massholes</title>
 
+    <!-- Custom styles for this template -->
+
     <!-- Bootstrap core CSS -->
+    <link href="styles.css" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="jumbotron.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -46,15 +46,18 @@
           <a class="navbar-brand" href="/">Pats Chat: A Forum for Massholes</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+          <% if current_user['name'] %>
+            <form class="navbar-form navbar-right">
+              <button type="button" class="btn btn-primary">Welcome, <%= current_user['name']%></button>
+              <a href="#"><button type="button" class="btn btn-success">User Profile</button></a>
+              <a href="/logout"><button type="button" class="btn btn-danger">Log Out!</button></a>
+            </form>  
+          <% else %>
+            <form class="navbar-form navbar-right">
+                <a href="/login"><button type="button" class="btn btn-success">Log In!</button></a>
+                <a href="/signup"><button type="button" class="btn btn-success">Sign Up!</button></a>
+            </form>
+          <% end %>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
