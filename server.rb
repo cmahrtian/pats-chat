@@ -11,12 +11,21 @@ module Forum
 
 		enable :sessions
 
-		db = PG.connect(dbname: "pats_forum")
+			if ENV["RACK_ENV"] == 'production'
+				@@db = PG.connect(
+					dbname: ENV["POSTGRES_DB"], 
+					host: ENV["POSTGRES_HOST"], 
+					password: ENV["POSTGRES_PASS"], 
+					user: ENV["POSTGRES_USER"]
+				)
+			else
+				@@db = PG.connect(dbname: "pats_forum")
+			end
 
 		def current_user
 			if session["user_id"]
-				db = PG.connect(dbname: "pats_forum")
-				@user ||= db.exec_params(<<-SQL, [session["user_id"]]).first
+				@@db = PG.connect(dbname: "pats_forum")
+				@user ||= @@db.exec_params(<<-SQL, [session["user_id"]]).first
 					SELECT * FROM users WHERE id = $1
 				SQL
 			else 
@@ -27,8 +36,8 @@ module Forum
 
 		get "/" do
 			@user = current_user
-			@topics = db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.id ORDER BY topic_score DESC")
-			# @topics = db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.user_id ORDER BY topic_score DESC")
+			# @topics = @@db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.id ORDER BY topic_score DESC")
+			@topics = @@db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.user_id ORDER BY topic_score DESC")
 			# ABOVE IS THE PROPER CODE FOR HEROKU
 			erb :index
 		end
@@ -45,7 +54,7 @@ module Forum
 			topic = params[:topic]
 			comment = markdown.render(params["comment"])
 
-			db.exec_params("INSERT INTO topics (topic_name, topic_comment, user_id) VALUES ($1, $2, $3)", [topic, comment, @user['id']])
+			@@db.exec_params("INSERT INTO topics (topic_name, topic_comment, user_id) VALUES ($1, $2, $3)", [topic, comment, @user['id']])
 
 			@contact_submitted = true
 			erb :topic
@@ -54,8 +63,8 @@ module Forum
 		get "/topic/:id" do
 			@user = current_user
 			@id = params[:id]
-			@topic = db.exec_params("SELECT * FROM users JOIN topics ON users.id = topics.id WHERE topics.id = #{@id.to_i}").first
-			@comments = db.exec_params("SELECT * FROM comments JOIN topics ON comments.topic_id = topics.id WHERE topics.id = #{@id}")
+			@topic = @@db.exec_params("SELECT * FROM users JOIN topics ON users.id = topics.id WHERE topics.id = #{@id.to_i}").first
+			@comments = @@db.exec_params("SELECT * FROM comments JOIN topics ON comments.topic_id = topics.id WHERE topics.id = #{@id}")
 			erb :topic_id
 		end
 
@@ -72,8 +81,8 @@ module Forum
 			@id = params[:id]
 			comment = markdown.render(params["comment"])
 
-			db.exec_params("INSERT INTO comments (comment_content, topic_id, user_id) VALUES ($1, $2, $3)", [comment, @id, @user['id']])
-			db.exec_params("UPDATE topics SET num_comments = num_comments + 1 WHERE id = #{@id.to_i}")
+			@@db.exec_params("INSERT INTO comments (comment_content, topic_id, user_id) VALUES ($1, $2, $3)", [comment, @id, @user['id']])
+			@@db.exec_params("UPDATE topics SET num_comments = num_comments + 1 WHERE id = #{@id.to_i}")
 
 			@comment_submitted = true
 			erb :comment
@@ -82,14 +91,14 @@ module Forum
 		get "/upvote/:id" do
 			@user = current_user
 			@id = params[:id]
-			db.exec_params("UPDATE topics SET topic_score = topic_score + 1 WHERE id = #{@id}")
+			@@db.exec_params("UPDATE topics SET topic_score = topic_score + 1 WHERE id = #{@id}")
 			redirect back
 		end
 
 		get "/downvote/:id" do
 			@user = current_user
 			@id = params[:id]
-			db.exec_params("UPDATE topics SET topic_score = topic_score - 1 WHERE id = #{@id}")
+			@@db.exec_params("UPDATE topics SET topic_score = topic_score - 1 WHERE id = #{@id}")
 			redirect back
 		end
 
@@ -102,7 +111,7 @@ module Forum
 			encrypted_password = BCrypt::Password.create(params[:password])
 			
 			begin
-			  users = db.exec_params(<<-SQL, [params[:name],params[:email],encrypted_password, params[:avatar]])
+			  users = @@db.exec_params(<<-SQL, [params[:name],params[:email],encrypted_password, params[:avatar]])
 				INSERT INTO users (name, email, password, avatar) VALUES ($1, $2, $3, $4) RETURNING id; 
 			  SQL
 			rescue
@@ -123,7 +132,7 @@ module Forum
 			if @user
 				if BCrypt::Password.new(@user["password"]) == params[:password]
 					session["user_id"] = @user["id"]
-					@topics = db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.id")
+					@topics = @@db.exec_params("SELECT * FROM users JOIN topics on users.id = topics.id")
 					redirect "/"
 					erb :index
 				else
