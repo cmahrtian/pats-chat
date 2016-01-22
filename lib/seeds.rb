@@ -8,7 +8,7 @@ if ENV["RACK_ENV"] == 'production'
 		user: ENV["POSTGRES_USER"]
 	)
 else
-	conn = PG.connect(dbname: "project2")
+	conn = PG.connect(dbname: "pats_forum")
 end	
 
 conn.exec("DROP TABLE IF EXISTS users CASCADE")
