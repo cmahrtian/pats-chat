@@ -23,7 +23,7 @@ module Forum
 
 		def current_user
 			if session["user_id"]
-				@@db = PG.connect(dbname: "pats_forum")
+				
 				@user ||= @@db.exec_params(<<-SQL, [session["user_id"]]).first
 					SELECT * FROM users WHERE id = $1
 				SQL
