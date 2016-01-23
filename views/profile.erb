@@ -5,13 +5,13 @@
 </div>
 
 <div class="comments" style="margin-left: 10%">    
+  <h2>Previous Topics Started:</h2>
   <% @topics.each do |topic| %>
-    <h2>Previous Topics Started:</h2>
-      <h4><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h4>
+    <h4><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h4>
   <% end %>
 
+  <h2>Previous Comments Made:</h2>
   <% @comments.each do |comment| %>
-  	<h2>Previous Comments Made:</h2>
   	<p><%= comment['comment_content']%></p>
   <% end %>
 </div>

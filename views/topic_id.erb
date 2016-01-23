@@ -6,11 +6,11 @@
         <p><strong>Comment: </strong><%= "#{@topic['topic_comment']}" %></p>
         <p>
           <% if current_user['name'] %>
-            <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote</button></a>
+            <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
             <h4><%= "#{@topic['topic_score']}" %></h4>
             <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote</button></a>
           <% else %>
-              <a href="/login"><button type="button" class="btn btn-success">Upvote</button></a>
+              <a href="/login"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
               <h4><%= "#{@topic['topic_score']}" %></h4>
               <a href="/login"><button type="button" class="btn btn-danger">Downvote</button></a>
           <% end %>  
