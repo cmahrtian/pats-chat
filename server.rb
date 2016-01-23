@@ -153,7 +153,8 @@ module Forum
 		get "/profile/:id" do
 			@user = current_user
 			@id = params[:id]
-			@contributions = @@db.exec_params("SELECT * FROM topics JOIN comments ON topics.user_id = comments.user_id;")
+			@topics = @@db.exec_params("SELECT * FROM topics WHERE user_id = #{@id}")
+			@comments = @@db.exec_params("SELECT * FROM comments WHERE user_id = #{@id}")
 			erb :profile
 		end
 
