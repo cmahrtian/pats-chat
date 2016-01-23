@@ -1,6 +1,7 @@
 require "pg"
 require "sinatra/base"
 require "bcrypt"
+require "digest/md5"
 
 ERRORS = { "1" => "That email already exists!" }
 
@@ -62,7 +63,7 @@ module Forum
 		get "/topic/:id" do
 			@user = current_user
 			@id = params[:id]
-			@topic = @@db.exec_params("SELECT * FROM users JOIN topics ON users.id = topics.id WHERE topics.id = #{@id.to_i}").first
+			@topic = @@db.exec_params("SELECT * FROM users JOIN topics ON users.id = topics.id WHERE topics.id = #{@id}")
 			@comments = @@db.exec_params("SELECT * FROM comments JOIN topics ON comments.topic_id = topics.id WHERE topics.id = #{@id}")
 			erb :topic_id
 		end
@@ -147,6 +148,13 @@ module Forum
 		get "/logout" do
 			session.clear
 			redirect "/"
+		end
+
+		get "/profile/:id" do
+			@user = current_user
+			@id = params[:id]
+			@contributions = @@db.exec_params("SELECT * FROM topics JOIN comments ON topics.user_id = comments.user_id;")
+			erb :profile
 		end
 
 	end

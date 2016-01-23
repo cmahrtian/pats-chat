@@ -1,0 +1,12 @@
+<div class="jumbotron gilette">
+  <div class="container">
+  	<h2>Hi <%= "#{@user['name']}" %>! Welcome to your profile page!</h2>
+  </div>
+</div>
+
+<div class="comments" style="margin-left: 10%">    
+  <% @contributions.each do |contribution| %>
+    <h2>Previous Topics Started:</h2>
+      <h4></h4>
+  <% end %>
+</div>

@@ -48,7 +48,7 @@
           <% if current_user['name'] %>
             <form class="navbar-form navbar-right">
               <button type="button" class="btn btn-primary">Welcome, <%= current_user['name']%></button>
-              <a href="#"><button type="button" class="btn btn-success">User Profile</button></a>
+              <a href="/profile/<%="#{@user['id']}"%>"><button type="button" class="btn btn-success">User Profile</button></a>
               <a href="/logout"><button type="button" class="btn btn-danger">Log Out!</button></a>
             </form>  
           <% else %>
