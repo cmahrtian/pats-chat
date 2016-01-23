@@ -11,7 +11,7 @@
             <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote</button></a>
           <% else %>
               <a href="/login"><button type="button" class="btn btn-success">Upvote</button></a>
-              <h4><%= "#{topic['topic_score']}" %></h4>
+              <h4><%= "#{@topic['topic_score']}" %></h4>
               <a href="/login"><button type="button" class="btn btn-danger">Downvote</button></a>
           <% end %>  
         </p>
