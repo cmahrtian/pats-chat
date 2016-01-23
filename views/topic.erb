@@ -1,12 +1,24 @@
 <div class="jumbotron">	
 	<div class="container">
-		<h1 style="text-align: center">Start a new topic!</h1>
 		<% if @contact_submitted %>
-			<p>Thank you!</p>
+			<h1 style="text-align: center">Thank you for your contribution!</h1>
+			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/" role="button">Return to Homepage &raquo;</a></p>
+			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/topic/<%="#{@topic_comment['id'].to_i}"%>" role="button">Go to Topic Page &raquo;</a></p>
 		<% else %>
+			<h1 style="text-align: center">Start a new topic!</h1>
 			<form class="topic" action="/topic" method="post">
 				
-				<div class="input-row">
+				<fieldset class="form-group">
+					<label for="topic">Topic Title:</label>
+				    <input type="text" class="form-control" placeholder="Enter topic title" name="topic">
+				</fieldset>
+				<fieldset class="form-group">
+				    <label for="comment">Topic Blurb:</label>
+				    <textarea class="form-control" name="comment" rows="5"></textarea>
+				</fieldset>
+				<button type="submit" class="btn btn-primary">Submit</button>
+
+				<!-- <div class="input-row">
 					<label for="topic">Topic Title (max 100 characters): </label>
 					<input type="text" name="topic"/>
 				</div>
@@ -18,7 +30,8 @@
 
 				<div class="input-row">
 					<input type="submit" value="Submit Topic!"/>
-				</div>
+				</div> -->
+			
 			</form>
 		<% end %>	
 	</div>	

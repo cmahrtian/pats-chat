@@ -1,10 +1,11 @@
 <div class="jumbotron">	
 	<div class="container">
-		<h1 style="text-align: center">Comment on a topic!</h1>
 		<% if @comment_submitted %>
-			<p>Thank you!</p>
-			<p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>" role="button">Back to Topic Page! &raquo;</a></p>
+			<h1 style="text-align: center">Thank you for your contribution!</h1>
+			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>" role="button">Back to Topic Page &raquo;</a></p>
+			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/" role="button">Return to Homepage &raquo;</a></p>
 		<% else %>
+			<h1 style="text-align: center">Comment on a topic!</h1>
 			<form class="comment" action="/topic/<%="#{@id}"%>/comment" method="post">
 				
 				<div class="input-row">	

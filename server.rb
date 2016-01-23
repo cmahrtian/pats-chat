@@ -55,6 +55,7 @@ module Forum
 			comment = markdown.render(params["comment"])
 
 			@@db.exec_params("INSERT INTO topics (topic_name, topic_comment, user_id) VALUES ($1, $2, $3)", [topic, comment, @user['id']])
+			@topic_comment = @@db.exec_params("SELECT * FROM topics WHERE topic_comment = $1", [comment]).first
 
 			@contact_submitted = true
 			erb :topic

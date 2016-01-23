@@ -1,3 +1,5 @@
+/*Homepage CSS*/
+
 div.gilette {
   background-image: url("gilette.jpg");
   background-size: 100% 100%;
@@ -13,7 +15,24 @@ div.row {
   margin-left: 1%;
 }
 
+/*Login, Signup, Topic and Comment Page CSS*/
 
+div.error-message {
+  margin-left: 40%;
+  color: red;
+}
+
+form {
+  margin-left: 35%;
+}
+
+form.topic {
+  margin-left: 28%;
+}
+
+input.form-control {
+  width: 35%;
+}
 
 /*pre.user {
   display: inline-block;
