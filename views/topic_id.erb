@@ -1,13 +1,19 @@
 <div class="jumbotron">
 	<div class="container">
 		<h2><%= "#{@topic['topic_name']}" %></h2>
-		<p><strong>Name: </strong><%= "#{@topic['name']}" %></p>
-        <p><strong>Email: </strong><%= "#{@topic['email']}" %></p>
+		<p><strong>Name: </strong><%= "#{@user['name']}" %></p>
+        <p><strong>Email: </strong><%= "#{@user['email']}" %></p>
         <p><strong>Comment: </strong><%= "#{@topic['topic_comment']}" %></p>
         <p>
+          <% if current_user['name'] %>
             <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote</button></a>
             <h4><%= "#{@topic['topic_score']}" %></h4>
             <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote</button></a>
+          <% else %>
+              <a href="/login"><button type="button" class="btn btn-success">Upvote</button></a>
+              <h4><%= "#{topic['topic_score']}" %></h4>
+              <a href="/login"><button type="button" class="btn btn-danger">Downvote</button></a>
+          <% end %>  
         </p>
         <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
     </div>
