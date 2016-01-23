@@ -63,7 +63,7 @@ module Forum
 		get "/topic/:id" do
 			@user = current_user
 			@id = params[:id]
-			@topic = @@db.exec_params("SELECT * FROM topics WHERE topics.id = #{@id}")
+			@topic = @@db.exec_params("SELECT * FROM topics WHERE topics.id = #{@id.to_i}")
 			@comments = @@db.exec_params("SELECT * FROM comments JOIN topics ON comments.topic_id = topics.id WHERE topics.id = #{@id}")
 			erb :topic_id
 		end
