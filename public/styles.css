@@ -22,9 +22,9 @@ div.error-message {
   color: red;
 }
 
-form {
+/*form {
   margin-left: 35%;
-}
+}*/
 
 form.topic {
   margin-left: 28%;
@@ -32,6 +32,10 @@ form.topic {
 
 input.form-control {
   width: 35%;
+}
+
+textarea.comment {
+  width: 40%;
 }
 
 /*pre.user {
