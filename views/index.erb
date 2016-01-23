@@ -17,11 +17,7 @@
       <h1>Previous Topics</h1>
       <% @topics.each do |topic| %>
         <div class="row">
-          <h3><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h3>
-          <p><strong>Name: </strong><%= "#{topic['name']}" %></p>
-          <p><strong>Email: </strong><%= "#{topic['email']}" %></p>
-          <p><strong>Blurb: </strong><%= "#{topic['topic_comment']}" %></p>
-          <p>
+          <div class="voting">
             <% if current_user['name'] %>
               <a href="/upvote/<%="#{topic['id']}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
               <h4><%= "#{topic['topic_score']}" %></h4>
@@ -31,15 +27,24 @@
               <h4><%= "#{topic['topic_score']}" %></h4>
               <a href="/login"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
             <% end %>
-          </p>
-          <h4>Number of Comments: <%= "#{topic['num_comments']}" %></h4>
-          <p>
-            <% if current_user['name'] %>
-              <a class="btn btn-primary btn-lg" href="/topic/<%="#{topic['id']}"%>/comment" role="button">Post a comment! &raquo;</a>
-            <% else %>
-              <a class="btn btn-primary btn-lg" href="/login" role="button">Post a Comment! &raquo;</a>
-            <% end %>
-          </p>
+          </div>
+
+          <div class="topic-and-author">
+            <h3><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h3>
+            <p><%= "#{topic['topic_comment']}" %></p>
+            <p><strong>Posted By: </strong><%= "#{topic['name']}" %></p>
+          </div>  
+             
+          <div class="comment-score">  
+            <h4>Number of Comments: <%= "#{topic['num_comments']}" %></h4>
+            <p>
+              <% if current_user['name'] %>
+                <a class="btn btn-primary btn-lg" href="/topic/<%="#{topic['id']}"%>/comment" role="button">Post a comment! &raquo;</a>
+              <% else %>
+                <a class="btn btn-primary btn-lg" href="/login" role="button">Post a Comment! &raquo;</a>
+              <% end %>
+            </p>
+          </div>  
           <!-- <div class="input-row">
             <input type="submit" value="Comment on this topic!"/>
           </div> -->

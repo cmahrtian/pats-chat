@@ -11,9 +11,29 @@ div.gilette h1, div.gilette p {
   text-shadow: 2px 2px black;
 }
 
-div.row {
+/*div.row {
   margin-left: 1%;
-}
+  position: relative;
+  height: 100px;
+}*/
+
+/*div.row {
+  position: relative;
+  float: left;
+}*/
+
+/*div.voting, div.topic-and-author, div.comment-score {
+  float: left;
+  display: inline-block;
+}*/
+
+/*div.topic-and-author {
+  display: inline;
+}*/
+
+/*div.comment-score {
+  float: right;
+}*/
 
 /*Login, Signup, Topic and Comment Page CSS*/
 
@@ -21,10 +41,6 @@ div.error-message {
   margin-left: 40%;
   color: red;
 }
-
-/*form {
-  margin-left: 35%;
-}*/
 
 form.topic {
   margin-left: 28%;
@@ -37,51 +53,3 @@ input.form-control {
 textarea.comment {
   width: 40%;
 }
-
-/*pre.user {
-  display: inline-block;
-  position: absolute;
-}*/
-
-/*form.topic, form.comment {
-  width: 600px;
-  background: #FBE0B6;
-  padding: 20px;
-  margin: 0 auto;
-}
-
-form.topic, form.comment div.input-row {
-  padding: 6px;
-}
-
-form.topic, form.comment div.input-row label {
-  vertical-align: top;
-  font-size: 22px;
-  display: inline-block;
-  width: 400px;
-}
-
-form.topic, form.comment div.input-row input[type=text] {
-  font-size: 22px;
-  width: 500px;
-  height: 50px;
-  padding: 6px;
-  border: 1px solid #bbb;
-}
-
-form.topic, form.comment div.input-row textarea {
-  font-size: 22px;
-  padding: 6px;
-  width: 500px;
-  height: 200px;
-  border: 1px solid #bbb;
-}
-
-form.topic, form.comment div.input-row input[type=submit] {
-  font-size: 22px;
-  border: 1px solid #bbb;
-  margin-left: 126px;
-  background: #DE5A51;
-  padding: 6px 20px;
-  cursor: pointer;
-}*/
