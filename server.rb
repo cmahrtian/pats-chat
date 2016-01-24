@@ -142,7 +142,7 @@ module Forum
 					erb :login
 				end	
 			else 
-				@error = "Invalid username!"
+				@error = "Invalid email!"
 				erb :login
 			end
 		end
