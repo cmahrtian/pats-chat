@@ -5,7 +5,7 @@
 		<h4><%= @error %></h4>
 	</div>	
 
-	<h1 style="text-align: center">Log in and contribute to Pats Chat!</h1>
+	<h1>Log in and contribute to Pats Chat!</h1>
 
 	<form method="post" action="/login" class="login">
 	  <fieldset class="form-group">
@@ -17,6 +17,8 @@
 	    <input type="password" class="form-control" placeholder="Password" name="password">
 	  </fieldset>
 	  <button type="submit" class="btn btn-primary">Submit</button>
+	  <p style="margin: 10px 0 10px 2px">OR...</p>
+	  <a href="/signup"><button type="button" class="btn btn-success">Create An Account!</button></a>
 	</form>
 
 	</div>	

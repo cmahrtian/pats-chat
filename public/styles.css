@@ -1,14 +1,17 @@
 /*Homepage CSS*/
 
 div.gilette {
-  background-image: url("gilette.jpg");
+  background-image: url("gilette_edited.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
 div.gilette h1, div.gilette p {
-  color: white;
-  text-shadow: 2px 2px black;
+  color: darkblue;
+}
+
+div.gilette p {
+  font-size: 25px;
 }
 
 div.topics-header {
@@ -42,30 +45,6 @@ div.comment-score {
   float: left;
 }
 
-/*div.row {
-  margin-left: 1%;
-  position: relative;
-  height: 100px;
-}*/
-
-/*div.row {
-  position: relative;
-  float: left;
-}*/
-
-/*div.voting, div.topic-and-author, div.comment-score {
-  float: left;
-  display: inline-block;
-}*/
-
-/*div.topic-and-author {
-  display: inline;
-}*/
-
-/*div.comment-score {
-  float: right;
-}*/
-
 /*Login, Signup, Topic and Comment Page CSS*/
 
 div.error-message {
@@ -74,13 +53,21 @@ div.error-message {
 }
 
 form.topic {
-  margin-left: 28%;
+  width: 65%;
 }
 
-input.form-control {
+form.login, form.signup {
+  width: 28%;
+}
+
+/*textarea.comment {
+  width: 65%;
+}*/
+
+/*input.form-control {
   width: 35%;
 }
 
 textarea.comment {
   width: 40%;
-}
+}*/

@@ -5,12 +5,12 @@
 			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>" role="button">Back to Topic Page &raquo;</a></p>
 			<p style="text-align: center"><a class="btn btn-primary btn-lg" href="/" role="button">Return to Homepage &raquo;</a></p>
 		<% else %>
-			<h1 style="text-align: center">Comment on a topic!</h1>
+			<h1>Comment on a topic!</h1>
 			<form class="topic-comment" action="/topic/<%="#{@id}"%>/comment" method="post">
 				
 				<fieldset class="form-group">
 				    <label for="comment">Comment:</label>
-				    <textarea class="form-control" name="comment" id="exampleTextArea" rows="5"></textarea>
+				    <textarea class="form-control" name="comment" id="exampleTextArea" rows="5" style="width: 65%"></textarea>
 				</fieldset>
 				<button type="submit" class="btn btn-primary">Submit</button>
 

@@ -1,13 +1,13 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron gilette">
       <div class="container">
-        <h1>Wicked pissah!</h1>
-        <p>Welcome to Pats Chat, an open forum for fans to share their feelings on the four-time Super Bowl champs - whether you love the Patriots or hate them with the heat of a thousand suns.</p>
-        <p>Feel free to peruse our list of previously inaugurated topics or start one of your own.</p>
+        <h1>Welcome to Pats Chat!</h1>
+        <p>We are an open forum for fans to share their feelings on the four-time Super Bowl champs - whether you love the Patriots or hate them with the heat of a thousand suns.</p>
+        <p>Feel free to peruse our list of previously inaugurated topics or start one of your own. Wicked pissah!</p>
         <% if current_user['name'] %>
-          <p><a class="btn btn-primary btn-lg" href="/topic" role="button">Start a Topic! &raquo;</a></p>
+          <a class="btn btn-primary btn-lg" href="/topic" role="button">Start a Topic! &raquo;</a>
         <% else %>  
-          <p><a class="btn btn-primary btn-lg" href="/login" role="button">Start a Topic! &raquo;</a></p>
+          <a class="btn btn-primary btn-lg" href="/login" role="button">Start a Topic! &raquo;</a>
         <% end %>
       </div>
     </div>
