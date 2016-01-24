@@ -2,18 +2,18 @@
 	<div class="container">
 		<h2><%= "#{@topic['topic_name']}" %></h2>
 		<p><%= "#{@topic['topic_comment']}" %></p>
-    <p><strong>Posted By: </strong><%= "#{@poster['name']}" %></p>
-        <p>
-          <% if current_user['name'] %>
-            <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
-            <h4><%= "#{@topic['topic_score']}" %></h4>
-            <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
-          <% else %>
-              <a href="/login"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
-              <h4><%= "#{@topic['topic_score']}" %></h4>
-              <a href="/login"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
-          <% end %>  
-        </p>
+    
+    <p>
+      <% if current_user['name'] %>
+        <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
+        <h4><%= "#{@topic['topic_score']}" %></h4>
+        <a href="/downvote/<%="#{@id}"%>"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
+      <% else %>
+          <a href="/login"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
+          <h4><%= "#{@topic['topic_score']}" %></h4>
+          <a href="/login"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
+      <% end %>  
+    </p>
     </div>
 </div>    
 <div class="comments" style="margin-left: 10%">    
