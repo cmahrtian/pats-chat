@@ -1,9 +1,7 @@
 <div class="jumbotron">
 	<div class="container">
 		<h2><%= "#{@topic['topic_name']}" %></h2>
-		<p><strong>Name: </strong><%= "#{@user['name']}" %></p>
-        <p><strong>Email: </strong><%= "#{@user['email']}" %></p>
-        <p><strong>Comment: </strong><%= "#{@topic['topic_comment']}" %></p>
+		<p></strong><%= "#{@topic['topic_comment']}" %></p>
         <p>
           <% if current_user['name'] %>
             <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
@@ -15,11 +13,15 @@
               <a href="/login"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
           <% end %>  
         </p>
-        <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
     </div>
 </div>    
 <div class="comments" style="margin-left: 10%">    
     <h2>Number of Previous Comments: <%= "#{@topic['num_comments']}" %></h2>
+    <% if current_user['name'] %>
+      <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
+    <% else %>  
+      <p><a class="btn btn-primary btn-lg" href="/login" role="button">Post a comment! &raquo;</a></p>
+    <% end %>
     <% @comments.each do |comment| %>
     	<p><strong>Comment: </strong><%= "#{comment['comment_content']}" %></p>
     <% end %>
