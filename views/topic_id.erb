@@ -2,7 +2,7 @@
 	<div class="container">
 		<h2><%= "#{@topic['topic_name']}" %></h2>
 		<p><%= "#{@topic['topic_comment']}" %></p>
-    <p><strong>Posted By: </strong><%= @poster %></p>
+    <p><strong>Posted By: </strong><%= "#{@poster['name']}" %></p>
         <p>
           <% if current_user['name'] %>
             <a href="/upvote/<%="#{@id}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
