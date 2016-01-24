@@ -14,9 +14,10 @@
 
     <div class="container">
       <!-- Example row of columns -->
-      <h1>Previous Topics</h1>
+      <div class="topics-header"><h1>Previous Topics</h1></div>
       <% @topics.each do |topic| %>
-        <div class="row">
+        <div class="row wrapper">
+          
           <div class="voting">
             <% if current_user['name'] %>
               <a href="/upvote/<%="#{topic['id']}"%>"><button type="button" class="btn btn-success">Upvote &uarr;</button></a>
@@ -30,13 +31,13 @@
           </div>
 
           <div class="topic-and-author">
-            <h3><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h3>
+            <h3 style="margin-top: 10px"><a href="/topic/<%="#{topic['id']}"%>"><%= "#{topic['topic_name']}" %></a></h3>
             <p><%= "#{topic['topic_comment']}" %></p>
             <p><strong>Posted By: </strong><%= "#{topic['name']}" %></p>
           </div>  
              
           <div class="comment-score">  
-            <h4>Number of Comments: <%= "#{topic['num_comments']}" %></h4>
+            <h4 style="margin-top: 10px">Number of Comments: <%= "#{topic['num_comments']}" %></h4>
             <p>
               <% if current_user['name'] %>
                 <a class="btn btn-primary btn-lg" href="/topic/<%="#{topic['id']}"%>/comment" role="button">Post a comment! &raquo;</a>

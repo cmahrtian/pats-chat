@@ -11,6 +11,37 @@ div.gilette h1, div.gilette p {
   text-shadow: 2px 2px black;
 }
 
+div.topics-header {
+  margin-bottom: 20px;
+}
+
+div.wrapper {
+  width: 960px;
+  height: 160px;
+  position: relative;
+  margin: 20px 0 0 0;
+  border: 3px solid blue;
+}
+
+div.voting {
+  width: 140px;
+  height: 150px;
+  float: left;
+  margin: 10px 0 0 10px;
+}
+
+div.topic-and-author {
+  width: 550px;
+  height: 150px;
+  float: left;
+}
+
+div.comment-score {
+  width: 200px;
+  height: 150px;
+  float: left;
+}
+
 /*div.row {
   margin-left: 1%;
   position: relative;
