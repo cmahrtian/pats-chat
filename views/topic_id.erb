@@ -24,6 +24,7 @@
     <% end %>
     <h2>Number of Previous Comments: <%= "#{@topic['num_comments']}" %></h2>
     <% @comments.each do |comment| %>
-    	<p><strong>Comment: </strong><%= "#{comment['comment_content']}" %></p>
+    	<p><%= "#{comment['comment_content']}" %></p>
+      
     <% end %>
 </div>    

@@ -82,7 +82,7 @@ module Forum
     		
 			@user = current_user
 			@id = params[:id]
-			comment = markdown.render(exec_params["comment"])
+			comment = markdown.render(params["comment"])
 
 			@@db.exec_params("INSERT INTO comments (comment_content, topic_id, user_id) VALUES ($1, $2, $3)", [comment, @id, @user['id']])
 			@@db.exec_params("UPDATE topics SET num_comments = num_comments + 1 WHERE id = #{@id.to_i}")
