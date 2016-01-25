@@ -74,6 +74,7 @@ module Forum
 		get "/topic/:id/comment" do
 			@user = current_user
 			@id = params[:id]
+			
 			erb :comment
 		end
 
