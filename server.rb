@@ -67,6 +67,7 @@ module Forum
 			@topic = @@db.exec_params("SELECT * FROM topics WHERE id = #{@id}").first
 			@comments = @@db.exec_params("SELECT * FROM comments JOIN topics ON comments.topic_id = topics.id WHERE topics.id = #{@id}")
 			@poster = @@db.exec_params("SELECT * FROM users WHERE id = #{@topic['user_id']}").first
+			# @commenter = @@db.exec_params("SELECT * FROM comments JOIN users on comments.user_id = users.id WHERE comments.topic_id = #{@id}")
 			erb :topic_id
 		end
 
