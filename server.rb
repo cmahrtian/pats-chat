@@ -158,7 +158,6 @@ module Forum
 			@id = params[:id]
 			@topics = @@db.exec_params("SELECT * FROM topics WHERE user_id = #{@id}")
 			@comments = @@db.exec_params("SELECT * FROM comments WHERE user_id = #{@id}")
-			
 			erb :profile
 		end
 
