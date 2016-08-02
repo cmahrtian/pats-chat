@@ -14,17 +14,17 @@
           <a href="/login"><button type="button" class="btn btn-danger">Downvote &darr;</button></a>
       <% end %>  
     </p>
-    </div>
+  </div>
 </div>    
+
 <div class="comments" style="margin-left: 10%">    
-    <% if current_user['name'] %>
-      <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
-    <% else %>  
-      <p><a class="btn btn-primary btn-lg" href="/login" role="button">Post a comment! &raquo;</a></p>
-    <% end %>
-    <h2>Number of Previous Comments: <%= "#{@topic['num_comments']}" %></h2>
-    <% @comments.each do |comment| %>
-    	<p><%= "#{comment['comment_content']}" %></p>
-      
-    <% end %>
+  <% if current_user['name'] %>
+    <p><a class="btn btn-primary btn-lg" href="/topic/<%="#{@id}"%>/comment" role="button">Post a comment! &raquo;</a></p>
+  <% else %>  
+    <p><a class="btn btn-primary btn-lg" href="/login" role="button">Post a comment! &raquo;</a></p>
+  <% end %>
+  <h2>Number of Previous Comments: <%= "#{@topic['num_comments']}" %></h2>
+  <% @comments.each do |comment| %>
+  	<p><%= "#{comment['comment_content']}" %></p>
+  <% end %>
 </div>    
